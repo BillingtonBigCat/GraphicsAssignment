@@ -133,12 +133,12 @@ function createBlock(){
   let body = new Ammo.btRigidBody( rbInfo );
 
 
-  physicsWorld.addRigidBody( body, colGroupPlane, colGroupRedBall )
+  physicsWorld.addRigidBody( body, colGroupPlane, colGroupRedBall | colGroupGreenBall)
 }
 
 
 function createBall(){
-  
+  //red ball
   let pos = {x: 0, y: 20, z: 0};
   let radius = 2;
   let quat = {x: 0, y: 0, z: 0, w: 1};
@@ -179,7 +179,7 @@ function createBall(){
 }
 
 function createMaskBall(){
-    
+  //green ball
   let pos = {x: 1, y: 30, z: 0};
   let radius = 2;
   let quat = {x: 0, y: 0, z: 0, w: 1};
@@ -213,7 +213,7 @@ function createMaskBall(){
   let body = new Ammo.btRigidBody( rbInfo );
 
 
-  physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupRedBall);
+  physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupRedBall);
   
   ball.userData.physicsBody = body;
   rigidBodies.push(ball);
