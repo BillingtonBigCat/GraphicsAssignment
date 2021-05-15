@@ -15,7 +15,7 @@ for (var i = 0; i < WallX.length; i++) {
     width = x;
     height = i;
      
-    let pos = {x: -20, y: 2*height, z: -8+2*width};
+    let pos = {x: -20, y: 2*height + 2, z: -8+2*width};
     let scale = {x: 2, y: 2, z: 2};
     let quat = {x: 0, y: 0, z: 0, w: 1};
     let mass = 1;

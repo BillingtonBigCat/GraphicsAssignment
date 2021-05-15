@@ -1,9 +1,8 @@
 let physicsWorld, scene, camera, renderer, rigidBodies = [], tmpTrans = null
+let tmpPos = new THREE.Vector3(), tmpQuat = new THREE.Quaternion();
+let ammoTmpPos = null, ammoTmpQuat = null;
 let mouseCoords = new THREE.Vector2(), raycaster = new THREE.Raycaster();
 
-const STATE = { DISABLE_DEACTIVATION : 4 }
-
-const FLAGS = { CF_KINEMATIC_OBJECT: 2 }
 
 //Ammojs Initialization
 Ammo().then(start)
@@ -115,7 +114,13 @@ function setupEventHandlers(){
 
     window.addEventListener( 'mousedown', onMouseDown, false );
 
+    window.addEventListener('resize', function() {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+     });
+
 }
+
+
 
 
 function updatePhysics( deltaTime ){
