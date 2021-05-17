@@ -7,6 +7,17 @@
         <script src="js/three.js"></script>
         <script src="js/OrbitControls.js"></script>
         <script src="js/ammo.js"></script>
+        <script type="module" src="Assignment V2/js/GLTFLoader.js"></script>
+        <script type="module">
+          import { GLTFLoader } from "./Assignment V2/js/GLTFLoader.js";
+          var loader = new GLTFLoader();
+
+      var obj;
+      loader.load("Models/scene.gltf", function (gltf) {
+        obj = gltf.scene;
+        scene.add(gltf.scene);
+      });
+    </script>
     </head>
 
     <body>
