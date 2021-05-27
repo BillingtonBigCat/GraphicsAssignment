@@ -20,6 +20,10 @@ function start (){
     createRed();
     createBlue();
     createGreen();
+    createBarrier();
+    createBarrier2();
+    createSideWall1();
+    createSideWall2();
     createSkyBox();
     setupEventHandlers();
     renderFrame();
