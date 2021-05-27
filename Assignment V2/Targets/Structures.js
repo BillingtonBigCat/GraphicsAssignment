@@ -39,7 +39,7 @@ for (var i = 0; i < WallX.length; i++) {
     let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
     let body = new Ammo.btRigidBody( rbInfo );
 
-    physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall );
+    physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
     
     block.userData.physicsBody = body;
     rigidBodies.push(block);
@@ -80,7 +80,7 @@ function createGreen() {
   let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
   let body = new Ammo.btRigidBody( rbInfo );
 
-  physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall );
+  physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
   
   block.userData.physicsBody = body;
   rigidBodies.push(block);
@@ -122,7 +122,7 @@ function createBlue() {
   let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
   let body = new Ammo.btRigidBody( rbInfo );
 
-  physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall );
+  physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
   
   block.userData.physicsBody = body;
   rigidBodies.push(block);

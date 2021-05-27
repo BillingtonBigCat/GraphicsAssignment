@@ -1,7 +1,7 @@
 function createBlock(){
     
     let pos = {x: 0, y: 0, z: 0};
-    let scale = {x: 100, y: 2, z: 100};
+    let scale = {x: 150, y: 2, z: 150};
     let quat = {x: 0, y: 0, z: 0, w: 1};
     let mass = 0;
 

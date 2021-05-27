@@ -4,15 +4,15 @@ function onMouseDown ( event ) {
     
 
     if (random == 0){
-        color = new THREE.Color(0xff0000);
+        color = new THREE.Color(0xff0000); //red
     }
 
     else if ( random == 1){
-        color = new THREE.Color(0x00ff00);
+        color = new THREE.Color(0x00ff00); //green
     }
 
     else if ( random == 2){
-        color = new THREE.Color(0x0000ff);
+        color = new THREE.Color(0x0000ff); //blue
     }
 
     mouseCoords.set(
@@ -37,7 +37,7 @@ function onMouseDown ( event ) {
     //threeJS Section
     let ball = new THREE.Mesh(new THREE.SphereBufferGeometry(radius), new THREE.MeshPhongMaterial({color: color}));
 
-    ball.position.set(pos.x, pos.y, pos.z);
+    ball.position.set(pos.x, pos.y +220, pos.z);
     
     ball.castShadow = true;
     ball.receiveShadow = true;
@@ -62,15 +62,15 @@ function onMouseDown ( event ) {
     let body = new Ammo.btRigidBody( rbInfo );
 
     if (random == 0){
-        physicsWorld.addRigidBody( body, colGroupRedBall, colGroupRedBall );
+        physicsWorld.addRigidBody( body, colGroupRedBall, colGroupRedBall | colGroupPlane );
     }
 
     else if ( random == 1){
-        physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupGreenBall );
+        physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupGreenBall | colGroupPlane );
     }
 
     else if ( random == 2){
-        physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupBlueBall );
+        physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupBlueBall | colGroupPlane);
     }
     
 
