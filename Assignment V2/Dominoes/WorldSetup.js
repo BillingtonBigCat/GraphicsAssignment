@@ -18,6 +18,7 @@ function start (){
     setupGraphics();
     createBlock();
     createWall();
+    createSkyBox();
     setupEventHandlers();
     renderFrame();
 

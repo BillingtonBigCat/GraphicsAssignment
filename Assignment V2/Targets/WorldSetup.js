@@ -20,6 +20,7 @@ function start (){
     createRed();
     createBlue();
     createGreen();
+    createSkyBox();
     setupEventHandlers();
     renderFrame();
 

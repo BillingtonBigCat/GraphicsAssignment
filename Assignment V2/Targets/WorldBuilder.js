@@ -38,3 +38,27 @@ function createBlock(){
 
     physicsWorld.addRigidBody( body, colGroupPlane, colGroupRedBall | colGroupBlueBall | colGroupGreenBall);
 }
+
+function createSkyBox(){
+    let skyBoxArray = [];
+        let front = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_front.jpg');
+        let back  = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_back.jpg');
+        let up    = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_up.jpg');
+        let down  = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_down.jpg');
+        let right = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_right.jpg');
+        let left  = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_left.jpg');
+
+        skyBoxArray.push(new THREE.MeshBasicMaterial( { map: front }));
+        skyBoxArray.push(new THREE.MeshBasicMaterial( { map: back  }));
+        skyBoxArray.push(new THREE.MeshBasicMaterial( { map: up    }));
+        skyBoxArray.push(new THREE.MeshBasicMaterial( { map: down  }));
+        skyBoxArray.push(new THREE.MeshBasicMaterial( { map: right }));
+        skyBoxArray.push(new THREE.MeshBasicMaterial( { map: left  }));
+
+        for (let i=0; i < 6; i++)
+            skyBoxArray[i].side = THREE.BackSide;
+
+        let skyboxGeo = new THREE.BoxGeometry(1000, 1000, 1000);
+        let skybox = new THREE.Mesh( skyboxGeo, skyBoxArray);
+        scene.add(skybox);
+}
