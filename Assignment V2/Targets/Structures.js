@@ -32,7 +32,7 @@ function assignColour() {
   }
 }
 
-//create test wall
+//create left blocks wall
 function createBarrier() {
   assignColour();
   for (var j = 0; j < 2; j++){
@@ -95,7 +95,7 @@ function createBarrier() {
   }
 }
 
-//create 2nd wall
+//create right blocks wall
 function createBarrier2() {
   assignColour();
   for (var j = 0; j < 2; j++){
@@ -105,7 +105,7 @@ function createBarrier2() {
         width = x;
         height = i;
         
-        let pos = {x:j+15, y: 2*height + 2, z: 2*width -40};
+        let pos = {x:j+15, y: 2*height + 2, z: 2*width -38};
         let scale = {x: 2, y: 2, z: 2};
         let quat = {x: 0, y: 0, z: 0, w: 1};
         let mass = 0.5;
@@ -157,8 +157,9 @@ function createBarrier2() {
   }
 }
 
+//creat leftside wall
 function createSideWall1(){
-  let pos = {x: -15, y: 8, z: 60};
+  let pos = {x: -15, y: 8, z: 42};
   let scale = {x: 80, y: 30, z: 5};
   let quat = {x: 0, y: 0, z: 0, w: 1};
   let mass = 100000;
@@ -197,8 +198,9 @@ function createSideWall1(){
   rigidBodies.push(wall);
 }
 
+//create rightside wall
 function createSideWall2(){
-  let pos = {x: -15, y: 8, z: -60};
+  let pos = {x: -15, y: 8, z: -42};
   let scale = {x: 80, y: 30, z: 5};
   let quat = {x: 0, y: 0, z: 0, w: 1};
   let mass = 100000;
@@ -237,6 +239,48 @@ function createSideWall2(){
   rigidBodies.push(wall);
 }
 
+//creat back wall
+function createBackWall(){
+  let pos = {x: -53, y: 8, z: 0};
+  let scale = {x: 4, y: 30, z: 80};
+  let quat = {x: 0, y: 0, z: 0, w: 1};
+  let mass = 1000;
+
+  //threeJS Section
+  let wall = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x2a2a2a}));
+
+  wall.position.set(pos.x, pos.y, pos.z);
+  wall.scale.set(scale.x, scale.y, scale.z);
+
+  wall.castShadow = true;
+  wall.receiveShadow = true;
+
+  scene.add(wall);
+
+
+  //AmmoJS
+  let transform = new Ammo.btTransform();
+  transform.setIdentity();
+  transform.setOrigin( new Ammo.btVector3( pos.x, pos.y, pos.z ) );
+  transform.setRotation( new Ammo.btQuaternion( quat.x, quat.y, quat.z, quat.w ) );
+  let motionState = new Ammo.btDefaultMotionState( transform );
+
+  let colShape = new Ammo.btBoxShape( new Ammo.btVector3( scale.x * 0.5, scale.y * 0.5, scale.z * 0.5 ) );
+  colShape.setMargin( 0.05 );
+
+  let localInertia = new Ammo.btVector3( 0, 0, 0 );
+  colShape.calculateLocalInertia( mass, localInertia );
+
+  let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
+  let body = new Ammo.btRigidBody( rbInfo );
+
+  physicsWorld.addRigidBody( body, colGroupRedBall | colGroupGreenBall | colGroupBlueBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
+  
+  wall.userData.physicsBody = body;
+  rigidBodies.push(wall);
+}
+
+//colored targets
 function createRed() {
 
 for (var i = 0; i < WallX.length; i++) {

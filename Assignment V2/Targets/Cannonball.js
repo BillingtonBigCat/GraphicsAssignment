@@ -1,5 +1,9 @@
 var random = Math.floor(Math.random() * 3);;
 
+function changeColour(){
+    random = Math.floor(Math.random() * 3);;
+}
+
 function onMouseDown ( event ) {
     
 

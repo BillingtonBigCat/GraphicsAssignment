@@ -24,6 +24,7 @@ function start (){
     createBarrier2();
     createSideWall1();
     createSideWall2();
+    createBackWall();
     createSkyBox();
     setupEventHandlers();
     renderFrame();
