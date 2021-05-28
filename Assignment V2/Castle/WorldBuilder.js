@@ -1,12 +1,12 @@
 function createBlock(){
     
     let pos = {x: 0, y: 0, z: 4};
-    let scale = {x: 50, y: 2, z: 50};
+    let scale = {x: 15000, y: 2, z: 15000};
     let quat = {x: 0, y: 0, z: 0, w: 1};
     let mass = 0;
 
     //threeJS Section
-    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x228B22}));
+    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x00AEFF}));
 
     blockPlane.position.set(pos.x, pos.y, pos.z);
     blockPlane.scale.set(scale.x, scale.y, scale.z);
@@ -38,6 +38,8 @@ function createBlock(){
 
     physicsWorld.addRigidBody( body );
 }
+
+
 
 function createSkyBox(){
     let skyBoxArray = [];

@@ -17,12 +17,24 @@ function start (){
 
     setupGraphics();
     createBlock();
-    createTower();
-    createTower2();
+
     createSkyBox();
-    for (var i = 0; i < 3; i++) {
-        createWall(i);
-    }
+    
+    FirstTower();
+    cone();
+    secondTower();
+    box();
+    thirdTower();
+    torus();
+    createPins2(4);
+
+    createPins1(4);
+
+
+    
+    //for (var i = 0; i < 3; i++) {
+       // createWall(i);
+    //}
     
     setupEventHandlers();
     renderFrame();
@@ -53,7 +65,7 @@ function setupGraphics(){
 
     //create camera
     camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.2, 5000 );
-    camera.position.set( -90, 30, 0 );
+    camera.position.set( -85, 10, 0 );
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 
     let controls = new THREE.OrbitControls(camera);
