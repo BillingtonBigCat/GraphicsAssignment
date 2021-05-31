@@ -7,10 +7,6 @@ var BarrierA = new Array(15);
 for (var i = 0; i < BarrierA.length; i++) {
   BarrierA[i] = new Array(15);
 }
-var BarrierB = new Array(20);
-for (var i = 0; i < BarrierB.length; i++) {
-  BarrierB[i] = new Array(20);
-}
 
 
 //assigning random colours to structures
@@ -46,7 +42,7 @@ function createBarrier() {
         //let pos = {x:j +15, y: 2*height + 2, z: 2 +40};
         let scale = {x: 2, y: 2, z: 2};
         let quat = {x: 0, y: 0, z: 0, w: 1};
-        let mass = 0.5;
+        let mass = 1;
 
         //threeJS Section
         let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));
@@ -108,7 +104,7 @@ function createBarrier2() {
         let pos = {x:j+15, y: 2*height + 2, z: 2*width -38};
         let scale = {x: 2, y: 2, z: 2};
         let quat = {x: 0, y: 0, z: 0, w: 1};
-        let mass = 0.5;
+        let mass = 1;
 
         //threeJS Section
         let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));
@@ -288,7 +284,7 @@ for (var i = 0; i < WallX.length; i++) {
     let pos = {x: -20, y: 4*i + 2, z: 0};
     let scale = {x: 4, y: 4, z: 4};
     let quat = {x: 0, y: 0, z: 0, w: 1};
-    let mass = 1;
+    let mass = 2;
 
     //threeJS Section
     let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0xff0000}));
@@ -329,7 +325,7 @@ function createGreen() {
   let pos = {x: -20, y: 4*i + 2, z: 20};
   let scale = {x: 4, y: 4, z: 4};
   let quat = {x: 0, y: 0, z: 0, w: 1};
-  let mass = 1;
+  let mass = 2;
 
   //threeJS Section
   let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x00ff00}));
@@ -371,7 +367,7 @@ function createBlue() {
   let pos = {x: -20, y: 4*i + 2, z: -20};
   let scale = {x: 4, y: 4, z: 4};
   let quat = {x: 0, y: 0, z: 0, w: 1};
-  let mass = 1;
+  let mass = 2;
 
   //threeJS Section
   let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x0000ff}));
