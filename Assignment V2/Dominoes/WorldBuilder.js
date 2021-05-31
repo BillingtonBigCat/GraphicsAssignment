@@ -6,8 +6,11 @@ function createBlock(){
     let mass = 0;
 
     //threeJS Section
-    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0xa0afa4}));
-
+    var GrassMaterial = new THREE.TextureLoader().load('ModelsAndTextures/Green lush grass texture.jpeg');
+    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshBasicMaterial({map:GrassMaterial}));
+    GrassMaterial.wrapS = THREE.RepeatWrapping;
+    GrassMaterial.wrapT = THREE.RepeatWrapping;
+    GrassMaterial.repeat.set( 4, 4 );
     blockPlane.position.set(pos.x, pos.y, pos.z);
     blockPlane.scale.set(scale.x, scale.y, scale.z);
 

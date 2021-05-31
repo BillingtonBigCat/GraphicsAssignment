@@ -16,8 +16,9 @@ for (var i = 2; i < WallX.length+1; i++) {
     let mass = scale.y;
 
     //threeJS Section
-    let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: color}));
-
+    var DominoMaterial = new THREE.TextureLoader().load('ModelsAndTextures/molumen_domino_set_15 (1).png');
+    let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshBasicMaterial({map: DominoMaterial}));
+    
     block.position.set(pos.x, pos.y, pos.z);
     block.scale.set(scale.x, scale.y, scale.z);
 
