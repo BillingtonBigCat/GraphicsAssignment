@@ -5,7 +5,7 @@ var wallColour;
 //test wall
 var BarrierA = new Array(15);
 for (var i = 0; i < BarrierA.length; i++) {
-  BarrierA[i] = new Array(15);
+  BarrierA[i] = new Array(10);
 }
 
 
@@ -32,8 +32,8 @@ function assignColour() {
 function createBarrier() {
   assignColour();
   for (var j = 0; j < 2; j++){
-    for (var i = 0; i < BarrierA.length; i++) {
-      for (var x = 0; x < BarrierA[i].length; x++){
+    for (var i = 0; i < BarrierA[i].length; i++) {
+      for (var x = 0; x < BarrierA.length; x++){
       
         width = x;
         height = i;
@@ -42,7 +42,7 @@ function createBarrier() {
         //let pos = {x:j +15, y: 2*height + 2, z: 2 +40};
         let scale = {x: 2, y: 2, z: 2};
         let quat = {x: 0, y: 0, z: 0, w: 1};
-        let mass = 1;
+        let mass = 1.2;
 
         //threeJS Section
         let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));
@@ -95,8 +95,8 @@ function createBarrier() {
 function createBarrier2() {
   assignColour();
   for (var j = 0; j < 2; j++){
-    for (var i = 0; i < BarrierA.length; i++) {
-      for (var x = 0; x < BarrierA[i].length; x++){
+    for (var i = 0; i < BarrierA[i].length; i++) {
+      for (var x = 0; x < BarrierA.length; x++){
       
         width = x;
         height = i;
@@ -104,7 +104,7 @@ function createBarrier2() {
         let pos = {x:j+15, y: 2*height + 2, z: 2*width -38};
         let scale = {x: 2, y: 2, z: 2};
         let quat = {x: 0, y: 0, z: 0, w: 1};
-        let mass = 1;
+        let mass = 1.2;
 
         //threeJS Section
         let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));

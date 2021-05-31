@@ -1,12 +1,18 @@
 function createBlock(){
     
     let pos = {x: 0, y: 0, z: 0};
-    let scale = {x: 150, y: 2, z: 150};
+    let scale = {x: 350, y: 2, z: 350};
     let quat = {x: 0, y: 0, z: 0, w: 1};
     let mass = 0;
 
     //threeJS Section
-    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0xa0afa4}));
+    var planeMaterial = new THREE.TextureLoader().load('ModelsAndTextures/Stone.jpeg');
+
+    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({map: planeMaterial}));
+
+    planeMaterial.wrapS = THREE.RepeatWrapping;
+    planeMaterial.wrapT = THREE.RepeatWrapping;
+    planeMaterial.repeat.set(15, 15);
 
     blockPlane.position.set(pos.x, pos.y, pos.z);
     blockPlane.scale.set(scale.x, scale.y, scale.z);
