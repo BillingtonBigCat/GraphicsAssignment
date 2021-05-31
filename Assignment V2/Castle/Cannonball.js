@@ -53,7 +53,7 @@ function onMouseDown ( event ) {
     tmpPos.copy( raycaster.ray.direction );
     tmpPos.multiplyScalar(100 );
 
-    body.setLinearVelocity( new Ammo.btVector3( 2*tmpPos.x, 2*tmpPos.y, 2*tmpPos.z ) );
+    body.setLinearVelocity( new Ammo.btVector3( tmpPos.x, tmpPos.y, tmpPos.z ) );
     
     ball.userData.physicsBody = body;
     rigidBodies.push(ball);

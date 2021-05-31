@@ -30,11 +30,12 @@ function start (){
 
     createPins1(4);
 
-
-    
-    //for (var i = 0; i < 3; i++) {
-       // createWall(i);
-    //}
+    createTower();
+    createTower2();
+    for (var i = 0; i < 3; i++) {
+        createWall(i);
+    }
+  
     
     setupEventHandlers();
     renderFrame();
@@ -68,10 +69,10 @@ function setupGraphics(){
     camera.position.set( -85, 10, 0 );
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-    let controls = new THREE.OrbitControls(camera);
-    controls.addEventListener('change', renderer);
-    controls.minDistance = 5;
-    controls.maxDistance = 200;
+    //let controls = new THREE.OrbitControls(camera);
+    //.addEventListener('change', renderer);
+    //controls.minDistance = 5;
+    //controls.maxDistance = 200;
 
     //Add hemisphere light
     let hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.1 );
