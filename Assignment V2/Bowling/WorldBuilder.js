@@ -6,7 +6,8 @@ function createBlock(){
     let mass = 0;
 
     //threeJS Section
-    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x8b5a2b}));
+    var Lanematerial = new THREE.TextureLoader().load('ModelsAndTextures/Lane.png');
+    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshBasicMaterial({map: Lanematerial}));
 
     blockPlane.position.set(pos.x, pos.y, pos.z);
     blockPlane.scale.set(scale.x, scale.y, scale.z);
@@ -38,4 +39,5 @@ function createBlock(){
 
     physicsWorld.addRigidBody( body );
 }
+
 

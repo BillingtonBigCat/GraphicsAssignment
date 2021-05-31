@@ -22,7 +22,8 @@ function onMouseDown ( event ) {
     let mass = 1000000;
 
     //threeJS Section
-    let ball = new THREE.Mesh(new THREE.SphereBufferGeometry(radius), new THREE.MeshPhongMaterial({color: 0x00008b}));
+    var BallMaterial = new THREE.TextureLoader().load('ModelsAndTextures/bowling ball.png');
+    let ball = new THREE.Mesh(new THREE.SphereBufferGeometry(radius), new THREE.MeshBasicMaterial({map: BallMaterial}));
 
     ball.position.set(pos.x, pos.y, pos.z);
     

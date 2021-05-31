@@ -149,3 +149,15 @@ function updatePhysics( deltaTime ){
     }
 
 }
+const audioListener = new THREE.AudioListener();
+camera.add( audioListener );
+const oceanAmbientSound = new THREE.Audio( audioListener );
+scene.add( oceanAmbientSound );
+const loader = new THREE.AudioLoader();
+
+loader.load('ModelsAndTextures/Pim Poy.wav', function ( audioBuffer ) {
+		
+		oceanAmbientSound.setBuffer( audioBuffer );
+		oceanAmbientSound.play();
+	},
+);
