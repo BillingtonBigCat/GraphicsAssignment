@@ -6,7 +6,11 @@ function createBlock(){
     let mass = 0;
 
     //threeJS Section
-    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x00AEFF}));
+    var WaterMaterial = new THREE.TextureLoader().load('ModelsAndTextures/water.jpg');
+    let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshBasicMaterial({map: WaterMaterial}));
+    WaterMaterial.wrapS = THREE.RepeatWrapping;
+    WaterMaterial.wrapT = THREE.RepeatWrapping;
+    WaterMaterial.repeat.set( 30, 30 );
 
     blockPlane.position.set(pos.x, pos.y, pos.z);
     blockPlane.scale.set(scale.x, scale.y, scale.z);
