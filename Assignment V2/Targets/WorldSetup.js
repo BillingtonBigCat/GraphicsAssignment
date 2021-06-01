@@ -25,6 +25,9 @@ function start (){
     createSideWall1();
     createSideWall2();
     createBackWall();
+    createRedBack();
+    createBlueBack();
+    createGreenBack();
     createSkyBox();
     setupEventHandlers();
     renderFrame();
@@ -55,13 +58,13 @@ function setupGraphics(){
 
     //create camera
     camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.2, 5000 );
-    camera.position.set( 90, 30, 0 );
+    camera.position.set( 90, 20, 0 );
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-    let controls = new THREE.OrbitControls(camera);
+    /*let controls = new THREE.OrbitControls(camera);
     controls.addEventListener('change', renderer);
     controls.minDistance = 5;
-    controls.maxDistance = 200;
+    controls.maxDistance = 200;*/
 
     //Add hemisphere light
     let hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.1 );

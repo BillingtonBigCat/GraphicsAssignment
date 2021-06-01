@@ -47,12 +47,12 @@ function createBlock(){
 
 function createSkyBox(){
     let skyBoxArray = [];
-        let front = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_front.jpg');
-        let back  = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_back.jpg');
-        let up    = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_up.jpg');
-        let down  = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_down.jpg');
-        let right = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_right.jpg');
-        let left  = new THREE.TextureLoader().load( 'ModelsAndTextures/Ryfjallet/snow_left.jpg');
+        let front = new THREE.TextureLoader().load( 'ModelsAndTextures/Snow/snow_front.jpg');
+        let back  = new THREE.TextureLoader().load( 'ModelsAndTextures/Snow/snow_back.jpg');
+        let up    = new THREE.TextureLoader().load( 'ModelsAndTextures/Snow/snow_up.jpg');
+        let down  = new THREE.TextureLoader().load( 'ModelsAndTextures/Snow/snow_down.jpg');
+        let right = new THREE.TextureLoader().load( 'ModelsAndTextures/Snow/snow_right.jpg');
+        let left  = new THREE.TextureLoader().load( 'ModelsAndTextures/Snow/snow_left.jpg');
 
         skyBoxArray.push(new THREE.MeshBasicMaterial( { map: front }));
         skyBoxArray.push(new THREE.MeshBasicMaterial( { map: back  }));
