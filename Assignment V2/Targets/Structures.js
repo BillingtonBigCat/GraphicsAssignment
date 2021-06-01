@@ -277,8 +277,8 @@ function createBackWall(){
 }
 
 //colored targets
-function createRed() {
-
+function createMiddle() {
+assignColour();
 for (var i = 0; i < WallX.length; i++) {
 
     let pos = {x: -20, y: 4*i + 2, z: 0};
@@ -287,7 +287,7 @@ for (var i = 0; i < WallX.length; i++) {
     let mass = 2;
 
     //threeJS Section
-    let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0xff0000}));
+    let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));
 
     block.position.set(pos.x, pos.y, pos.z);
     block.scale.set(scale.x, scale.y, scale.z);
@@ -313,14 +313,26 @@ for (var i = 0; i < WallX.length; i++) {
     let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
     let body = new Ammo.btRigidBody( rbInfo );
 
-    physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
-    
+    //physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
+    if (wallColour == 0){
+      physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
+    }
+    else if (wallColour == 1){
+      physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
+    }
+  
+    else if (wallColour == 2){
+      physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
+    }
+
+
     block.userData.physicsBody = body;
     rigidBodies.push(block);
     }
 }
 
-function createGreen() {
+function createLeft() {
+  assignColour();
   for (var i = 0; i < WallX.length; i++) {
   let pos = {x: -20, y: 4*i + 2, z: 20};
   let scale = {x: 4, y: 4, z: 4};
@@ -328,7 +340,7 @@ function createGreen() {
   let mass = 2;
 
   //threeJS Section
-  let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x00ff00}));
+  let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));
 
   block.position.set(pos.x, pos.y, pos.z);
   block.scale.set(scale.x, scale.y, scale.z);
@@ -354,14 +366,25 @@ function createGreen() {
   let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
   let body = new Ammo.btRigidBody( rbInfo );
 
-  physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
-  
+  //physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
+  if (wallColour == 0){
+    physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
+  }
+  else if (wallColour == 1){
+    physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
+  }
+
+  else if (wallColour == 2){
+    physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
+  }
+
   block.userData.physicsBody = body;
   rigidBodies.push(block);
   }
 }
 
-function createBlue() {
+function createRight() {
+  assignColour();
   for (var i = 0; i < WallX.length; i++) {
   let pos = {x: -20, y: 4*i + 2, z: -20};
   let scale = {x: 4, y: 4, z: 4};
@@ -369,7 +392,7 @@ function createBlue() {
   let mass = 2;
 
   //threeJS Section
-  let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x0000ff}));
+  let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));
 
   block.position.set(pos.x, pos.y, pos.z);
   block.scale.set(scale.x, scale.y, scale.z);
@@ -395,15 +418,26 @@ function createBlue() {
   let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
   let body = new Ammo.btRigidBody( rbInfo );
 
-  physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
-  
+  //physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
+  if (wallColour == 0){
+    physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
+  }
+  else if (wallColour == 1){
+    physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
+  }
+
+  else if (wallColour == 2){
+    physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
+  }
+
   block.userData.physicsBody = body;
   rigidBodies.push(block);
   }
 }
 
-function createRedBack() {
-
+//back targets
+function createMiddleBack() {
+  assignColour();
   for (var i = 0; i < BarrierA.length; i++) {
   
       let pos = {x: -85, y: 4*i + 2, z: 0};
@@ -412,7 +446,7 @@ function createRedBack() {
       let mass = 2;
   
       //threeJS Section
-      let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0xff0000}));
+      let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));
   
       block.position.set(pos.x, pos.y, pos.z);
       block.scale.set(scale.x, scale.y, scale.z);
@@ -438,14 +472,25 @@ function createRedBack() {
       let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
       let body = new Ammo.btRigidBody( rbInfo );
   
-      physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
-      
+      //physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
+      if (wallColour == 0){
+        physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
+      }
+      else if (wallColour == 1){
+        physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
+      }
+    
+      else if (wallColour == 2){
+        physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
+      }
+
       block.userData.physicsBody = body;
       rigidBodies.push(block);
       }
   }
 
-function createGreenBack() {
+function createLeftBack() {
+  assignColour();
   for (var i = 0; i < BarrierA.length; i++) {
   let pos = {x: -120, y: 4*i + 2, z: -30};
   let scale = {x: 4, y: 4, z: 4};
@@ -453,7 +498,7 @@ function createGreenBack() {
   let mass = 2;
 
   //threeJS Section
-  let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x00ff00}));
+  let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));
 
   block.position.set(pos.x, pos.y, pos.z);
   block.scale.set(scale.x, scale.y, scale.z);
@@ -479,14 +524,25 @@ function createGreenBack() {
   let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
   let body = new Ammo.btRigidBody( rbInfo );
 
-  physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
-  
+  //physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
+  if (wallColour == 0){
+    physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
+  }
+  else if (wallColour == 1){
+    physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
+  }
+
+  else if (wallColour == 2){
+    physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
+  }
+
   block.userData.physicsBody = body;
   rigidBodies.push(block);
   }
 }
 
-function createBlueBack() {
+function createRightBack() {
+  assignColour();
   for (var i = 0; i < BarrierA.length; i++) {
   let pos = {x: -120, y: 4*i + 2, z: 30};
   let scale = {x: 4, y: 4, z: 4};
@@ -494,7 +550,7 @@ function createBlueBack() {
   let mass = 2;
 
   //threeJS Section
-  let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0x0000ff}));
+  let block = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: segmentColour}));
 
   block.position.set(pos.x, pos.y, pos.z);
   block.scale.set(scale.x, scale.y, scale.z);
@@ -520,8 +576,18 @@ function createBlueBack() {
   let rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
   let body = new Ammo.btRigidBody( rbInfo );
 
-  physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
-  
+  //physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
+  if (wallColour == 0){
+    physicsWorld.addRigidBody( body, colGroupRedBall, colGroupPlane | colGroupRedBall | colGroupGreenBall | colGroupBlueBall );
+  }
+  else if (wallColour == 1){
+    physicsWorld.addRigidBody( body, colGroupGreenBall, colGroupPlane | colGroupGreenBall | colGroupRedBall | colGroupBlueBall);
+  }
+
+  else if (wallColour == 2){
+    physicsWorld.addRigidBody( body, colGroupBlueBall, colGroupPlane | colGroupBlueBall | colGroupRedBall | colGroupGreenBall );
+  }
+
   block.userData.physicsBody = body;
   rigidBodies.push(block);
   }

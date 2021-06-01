@@ -17,17 +17,17 @@ function start (){
 
     setupGraphics();
     createBlock();
-    createRed();
-    createBlue();
-    createGreen();
+    createMiddle();
+    createLeft();
+    createRight();
     createBarrier();
     createBarrier2();
     createSideWall1();
     createSideWall2();
     createBackWall();
-    createRedBack();
-    createBlueBack();
-    createGreenBack();
+    createMiddleBack();
+    createLeftBack();
+    createRightBack();
     createSkyBox();
     setupEventHandlers();
     renderFrame();
